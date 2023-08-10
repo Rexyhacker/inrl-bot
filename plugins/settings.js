@@ -29,7 +29,7 @@ inrl({
             ANTI_SPAM
         } = data;
         return await m.sock.sendMessage(m.from, {
-            text: GenListMessage(`status : ${ANTI_SPAM}`, [`SPAM ${ANTI_SPAM== "true"? ': DEACTIVATE ':': ACTIVATE'}`])
+            text: GenListMessage(`status : ${ANTI_SPAM}`, [`ANTI SPAM ${ANTI_SPAM== "true"? ': DEACTIVATE ':': ACTIVATE'}`])
         })
     } else if (match == "show bot online for all times") {
         const {
@@ -206,10 +206,10 @@ inrl({
     if(!m.reply_message.fromMe) return;
     if (!m.client.body.includes('status')) return;
     match = m.client.body.toLowerCase();
-    if (match.includes('spam')) {
+    if (match.includes('anti spam')) {
         let updt = match.split(" ").pop();
         updt = updt == "true" ? 'false' : 'true';
-        await UpdateVariable("SPAM", updt, m.client.user.number);
+        await UpdateVariable("ANTI_SPAM", updt, m.client.user.number);
         return await m.reply("_*requested to the db*_");
     } else if (match.includes('allways online')) {
         let updt = match.split(" ").pop();
